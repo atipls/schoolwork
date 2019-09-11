@@ -14,7 +14,7 @@ auto read_line() -> std::string {
 	return ret;
 }
 auto to_upper(std::string& str) { std::transform(str.begin(), str.end(), str.begin(), ::toupper); }
-constexpr auto cheat = true; //constexpr hogy ki tudja a fordító optimizálni
+constexpr auto cheat = true;
 
 int main() {
 	fprintf(stdout, "Talald ki milyen szamra gondoltam 1-1000 kozott!\n");
@@ -22,8 +22,7 @@ int main() {
 	bool ujra = true;
 	do {
 		gondolt = distr(random);
-		tipp = 0;
-		tippek_szama = 0;
+		tipp = tippek_szama = 0;
 		if (cheat)
 			fprintf(stderr, "(%d-re gondoltam)\n", gondolt);
 		do {
