@@ -17,7 +17,9 @@ auto to_upper(std::string& str) { std::transform(str.begin(), str.end(), str.beg
 constexpr auto cheat = true;
 
 int main() {
-	printf("Talald ki milyen szamra gondoltam 1-1000 kozott!\n");
+	setlocale(LC_ALL, "hu_HU"); //magyar konzol
+
+	printf("Találd ki milyen számra gondoltam 1-1000 között!\n");
 	uint32_t gondolt{}, tipp{}, tippek_szama{};
 	bool ujra = true;
 	do {
@@ -30,18 +32,18 @@ int main() {
 			tippek_szama++;
 			auto stipp = read_line();
 			if (!egesz_szam(stipp)) {
-				fprintf(stderr, "HIBA! Egesz szamot kerek!\n");
+				fprintf(stderr, "HIBA! Egész számot kérek!\n");
 				continue;
 			}
 			tipp = std::atoi(stipp.c_str());
 			if (gondolt == tipp)
-				printf("%d tipp utan eltalaltad!\n", tippek_szama);
+				printf("%d tipp után eltaláltad!\n", tippek_szama);
 			if (gondolt < tipp)
-				printf("Kissebb szamra gondoltam.\n");
+				printf("Kissebb számra gondoltam.\n");
 			if (gondolt > tipp)
-				printf("Nagyobb szamra gondoltam.\n");
+				printf("Nagyobb számra gondoltam.\n");
 		} while (gondolt != tipp);
-		printf("Meg egy kor? (Igen/Nem)\n");
+		printf("Még egy kör? (Igen/Nem)\n");
 		auto valasz = read_line();
 		to_upper(valasz);
 		ujra = !memcmp(valasz.c_str(), "IGEN", 4); //típuskonverziós trükk
