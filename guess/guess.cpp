@@ -16,7 +16,7 @@ auto read_line() -> std::string {
 auto to_upper(std::string& str) { std::transform(str.begin(), str.end(), str.begin(), ::toupper); }
 constexpr auto cheat = true;
 
-int main() {
+auto main() -> int32_t {
 	setlocale(LC_ALL, "hu_HU"); //magyar konzol
 
 	printf("Találd ki milyen számra gondoltam 1-1000 között!\n");
