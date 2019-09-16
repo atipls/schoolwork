@@ -19,31 +19,31 @@ constexpr auto cheat = true;
 auto main() -> int32_t {
 	setlocale(LC_ALL, "hu_HU"); //magyar konzol
 
-	printf("Találd ki milyen számra gondoltam 1-1000 között!\n");
+	wprintf(L"Találd ki milyen számra gondoltam 1-1000 között!\n");
 	uint32_t gondolt{}, tipp{}, tippek_szama{};
 	bool ujra = true;
 	do {
 		gondolt = distr(random);
 		tipp = tippek_szama = 0;
 		if (cheat)
-			printf("(%d-re gondoltam)\n", gondolt);
+			wprintf(L"(%d-re gondoltam)\n", gondolt);
 		do {
-			printf("Tippelj!: ");
+			wprintf(L"Tippelj!: ");
 			tippek_szama++;
 			auto stipp = read_line();
 			if (!egesz_szam(stipp)) {
-				fprintf(stderr, "HIBA! Egész számot kérek!\n");
+				fwprintf(stderr, L"HIBA! Egész számot kérek!\n");
 				continue;
 			}
 			tipp = std::atoi(stipp.c_str());
 			if (gondolt == tipp)
-				printf("%d tipp után eltaláltad!\n", tippek_szama);
+				wprintf(L"%d tipp után eltaláltad!\n", tippek_szama);
 			if (gondolt < tipp)
-				printf("Kissebb számra gondoltam.\n");
+				wprintf(L"Kissebb számra gondoltam.\n");
 			if (gondolt > tipp)
-				printf("Nagyobb számra gondoltam.\n");
+				wprintf(L"Nagyobb számra gondoltam.\n");
 		} while (gondolt != tipp);
-		printf("Még egy kör? (Igen/Nem)\n");
+		wprintf(L"Még egy kör? (Igen/Nem)\n");
 		auto valasz = read_line();
 		to_upper(valasz);
 		ujra = !memcmp(valasz.c_str(), "IGEN", 4); //típuskonverziós trükk
