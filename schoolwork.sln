@@ -11,6 +11,8 @@ Global
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		ReleaseLLVM|x64 = ReleaseLLVM|x64
+		ReleaseLLVM|x86 = ReleaseLLVM|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.Debug|x64.ActiveCfg = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.Release|x64.Build.0 = Release|x64
 		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.Release|x86.ActiveCfg = Release|Win32
 		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.Release|x86.Build.0 = Release|Win32
+		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.ReleaseLLVM|x64.ActiveCfg = ReleaseLLVM|x64
+		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.ReleaseLLVM|x64.Build.0 = ReleaseLLVM|x64
+		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.ReleaseLLVM|x86.ActiveCfg = ReleaseLLVM|Win32
+		{BEBE40CE-7350-4796-9DC6-B470FB20EF0A}.ReleaseLLVM|x86.Build.0 = ReleaseLLVM|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
