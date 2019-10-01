@@ -48,4 +48,6 @@ auto main() -> int32_t {
 		to_upper(valasz);
 		ujra = !memcmp(valasz.c_str(), "IGEN", 4); //típuskonverziós trükk
 	} while (ujra);
+	
+	return 0;
 }
