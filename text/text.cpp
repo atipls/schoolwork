@@ -5,10 +5,10 @@
 
 //fájl méret 
 auto file_meret(std::wifstream& ifs) -> long {
-	long size = ifs.tellg(); //std::ios::ate elvárt.
+	auto size = ifs.tellg(); //std::ios::ate elvárt.
 	ifs.seekg(0, std::ios_base::beg); //wifs elejére
 	ifs.clear(); //hibák kihagyása
-	return size;
+	return long(size);
 }
 
 //cél: szövegfájl készítése
