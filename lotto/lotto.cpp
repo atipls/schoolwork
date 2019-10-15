@@ -123,11 +123,30 @@ namespace tobbi_het {
 	auto primszamok() -> void {
 		wprintf(L"9. feladat: 1-90 közötti prímszámokból melyiket nem húzták ki?\n");
 
+		auto prim = [](int32_t szam) -> bool {
+			int32_t i = 0;
+			while (i++ < szam && szam % i == 0);
+			return i >= szam;
+		};
+
+		static auto get_primek = [&prim](int32_t max) -> std::vector<int> {
+			std::vector<int> primek{};
+			int i = 2;
+			do {
+				if (prim(i))
+					primek.push_back(i);
+				i++;
+			} while (i < max);
+			return primek;
+		};
+
 		auto primek = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89 };
+		auto generalt = get_primek(90);
 		std::unordered_map<int, bool> kihuzva{};
 
 		//kezdetben semmi sincs kihúzva
 		std::transform(primek.begin(), primek.end(), std::inserter(kihuzva, kihuzva.end()), [](int v) { return std::make_pair(v, false); });
+		
 		for (auto& het : lottosz) {
 			for (auto i = 0; i < 5; i++) {
 				if (kihuzva.count(het[i]) > 0)
