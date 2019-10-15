@@ -124,8 +124,8 @@ namespace tobbi_het {
 		wprintf(L"9. feladat: 1-90 közötti prímszámokból melyiket nem húzták ki?\n");
 
 		auto prim = [](int32_t szam) -> bool {
-			int32_t i = 0;
-			while (i++ < szam && szam % i == 0);
+			int32_t i = 2;
+			while (++i < szam && szam % i != 0);
 			return i >= szam;
 		};
 
@@ -140,8 +140,7 @@ namespace tobbi_het {
 			return primek;
 		};
 
-		auto primek = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89 };
-		auto generalt = get_primek(90);
+		auto primek = get_primek(90);
 		std::unordered_map<int, bool> kihuzva{};
 
 		//kezdetben semmi sincs kihúzva
@@ -163,15 +162,15 @@ namespace tobbi_het {
 int main() {
 	setlocale(LC_ALL, "hu_HU"); //magyar konzol
 
-	het52::beker();
-	het52::rendez();
+	//het52::beker();
+	//het52::rendez();
 
 	tobbi_het::betolt();
-	tobbi_het::valasztott();
-	tobbi_het::kihuzas();
-	tobbi_het::paratlan();
-	tobbi_het::hozzafuz();
-	tobbi_het::mindenszam(15);
+	//tobbi_het::valasztott();
+	//tobbi_het::kihuzas();
+	//tobbi_het::paratlan();
+	//tobbi_het::hozzafuz();
+	//tobbi_het::mindenszam(15);
 	tobbi_het::primszamok();
 
 	std::cin.get();
