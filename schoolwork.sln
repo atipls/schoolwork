@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "numbers", "numbers\numbers.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "futar", "futar\futar.vcxproj", "{5B21D144-BA07-447A-BC05-EFE320A82EC3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tarsalgo", "tarsalgo\tarsalgo.vcxproj", "{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -83,6 +85,18 @@ Global
 		{5B21D144-BA07-447A-BC05-EFE320A82EC3}.ReleaseLLVM|x64.Build.0 = Release|x64
 		{5B21D144-BA07-447A-BC05-EFE320A82EC3}.ReleaseLLVM|x86.ActiveCfg = Release|Win32
 		{5B21D144-BA07-447A-BC05-EFE320A82EC3}.ReleaseLLVM|x86.Build.0 = Release|Win32
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Debug|x64.ActiveCfg = Debug|x64
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Debug|x64.Build.0 = Debug|x64
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Debug|x86.ActiveCfg = Debug|Win32
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Debug|x86.Build.0 = Debug|Win32
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Release|x64.ActiveCfg = Release|x64
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Release|x64.Build.0 = Release|x64
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Release|x86.ActiveCfg = Release|Win32
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.Release|x86.Build.0 = Release|Win32
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.ReleaseLLVM|x64.ActiveCfg = Release|x64
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.ReleaseLLVM|x64.Build.0 = Release|x64
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.ReleaseLLVM|x86.ActiveCfg = Release|Win32
+		{04CD7D4F-DA31-4ABA-B091-F9023D7605CC}.ReleaseLLVM|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
