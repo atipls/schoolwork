@@ -19,7 +19,8 @@ void utolso_elvitt_auto() {
 			utolso = &fg;
 	if (utolso) {
 		printf("\"%s\" (%d) autót vitték el utoljára %d. napon.\n", utolso->m_rsz.c_str(), utolso->m_id, utolso->m_nap);
-	} else {
+	}
+	else {
 		printf("Nem vittek el egy autót sem.\n");
 	}
 }
@@ -91,10 +92,16 @@ void leghosszabb_ut() {
 		int32_t m_id;
 		std::string m_rsz;
 		uint32_t m_tav;
+
+		tavolsag(forgalom& fg) {
+			this->m_id = fg.m_id;
+			this->m_rsz; fg.m_rsz;
+			this->m_tav = megtett_tavolsag_szemely(fg);
+		}
 	};
 	std::vector<tavolsag> tavolsagok{};
 	for (auto& fg : g_parser->m_data)
-		tavolsagok.push_back(tavolsag{ fg.m_id, fg.m_rsz, megtett_tavolsag_szemely(fg) });
+		tavolsagok.push_back(tavolsag(fg));
 	uint32_t legid{ 0 }, legkm{ 0 };
 	for (auto& tv : tavolsagok)
 		if (tv.m_tav > legkm) {
@@ -156,7 +163,7 @@ int main() {
 	g_parser->parse();
 
 	utolso_elvitt_auto();
-	//nap_forgalma();
+	nap_forgalma();
 	autok_honap_vegen();
 	autok_tavolsaga();
 	leghosszabb_ut();
