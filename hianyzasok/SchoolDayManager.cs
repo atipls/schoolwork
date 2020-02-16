@@ -16,7 +16,7 @@ namespace hianyzasok {
                 Day = day;
                 Students = students;
             }
-
+            public bool IsDayStr(string str) => Program.HetNapja(Month, Day) == str;
             public void AddStudent(Student student) => Students.Add(student);
         }
         public List<SchoolDay> SchoolDays;
@@ -28,8 +28,9 @@ namespace hianyzasok {
             using (var contents = new StreamReader(file)) {
                 do {
                     contents.SkipWhitespace();
-                    var ch = (char)contents.Read();
+                    var ch = (char)contents.Peek();
                     if (ch == '#') {
+                        contents.Read();
                         var s_month = contents.ReadUntilSpace();
                         var s_day = contents.ReadUntilSpace();
                         int.TryParse(s_month, out int month);
@@ -52,7 +53,7 @@ namespace hianyzasok {
                                 case 'X': student.AddClass(ClassSkip.ProvenAway); break;
                                 case 'I': student.AddClass(ClassSkip.UnknownAway); break;
                                 case 'N': student.AddClass(ClassSkip.NoClassToSkip); break;
-                                default: break;
+                                default: throw new Exception("Unknown character!");
                             }
                         }
 

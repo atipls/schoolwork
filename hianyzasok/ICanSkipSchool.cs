@@ -11,5 +11,8 @@ namespace hianyzasok {
         UnknownAway,
         NoClassToSkip,
     }
+    public static class ClassSkipExtensions {
+        public static bool DidSkip(this ClassSkip skip) => skip == ClassSkip.UnknownAway || skip == ClassSkip.ProvenAway;
+    }
     public interface ICanSkipSchool : ISchoolDay<ClassSkip> { }
 }
