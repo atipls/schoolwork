@@ -45,7 +45,8 @@ namespace hianyzasok {
             if (ora_szam > 6)
                 ora_szam = 6;
 
-            var hianyzasok = manager.SchoolDays.Sum(x => x.IsDayStr(nap_hianyzas) ? x.Students.Count(y => y.Classes[ora_szam - 1].DidSkip()) : 0);
+            var hianyzasok = (from x in manager.SchoolDays where x.IsDayStr(nap_hianyzas) select from y in x.Students where y.Classes[ora_szam - 1].DidSkip() select y).SelectMany(x => x).Count();
+            //var hianyzasok = manager.SchoolDays.Sum(x => x.IsDayStr(nap_hianyzas) ? x.Students.Count(y => y.Classes[ora_szam - 1].DidSkip()) : 0);
             Console.WriteLine($"Ekkor összesen {hianyzasok} óra hiányzás történt.");
 
             var osszes_hianyzo = new DefaultDictionary<string, int>(0);
@@ -53,8 +54,8 @@ namespace hianyzasok {
                 osszes_hianyzo[diak.FullName] += diak.Classes.Count(x => x.DidSkip());
 
             var max_hianyzas = osszes_hianyzo.Max(x => x.Value);
-            var legtobbet_hianyzok = osszes_hianyzo.Where(x => x.Value == max_hianyzas);
-            Console.WriteLine($"7. feladat:\nA legtöbbet hiányzó tanulók: {string.Join(", ", legtobbet_hianyzok.Select(x => x.Key).ToArray())}");
+            var legtobbet_hianyzok = from x in osszes_hianyzo where x.Value == max_hianyzas select x.Key;
+            Console.WriteLine($"7. feladat:\nA legtöbbet hiányzó tanulók: {string.Join(", ", legtobbet_hianyzok.ToArray())}");
 
             Console.ReadLine();
         }
