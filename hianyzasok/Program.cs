@@ -40,10 +40,7 @@ namespace hianyzasok {
             var nap_hianyzas = Console.ReadLine().Trim().ToLower();
             Console.Write("Az óra sorszáma: ");
             var ora_hianyzas = Console.ReadLine();
-
             var ora_szam = int.Parse(ora_hianyzas);
-            if (ora_szam > 6)
-                ora_szam = 6;
 
             var hianyzasok = (from x in manager.SchoolDays where x.IsDayStr(nap_hianyzas) select from y in x.Students where y.Classes[ora_szam - 1].DidSkip() select y).SelectMany(x => x).Count();
             //var hianyzasok = manager.SchoolDays.Sum(x => x.IsDayStr(nap_hianyzas) ? x.Students.Count(y => y.Classes[ora_szam - 1].DidSkip()) : 0);
