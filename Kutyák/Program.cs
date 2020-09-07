@@ -63,12 +63,13 @@ namespace Kutyák {
 
             var legnagyobbEletkor = Kutyak.Max(x => x.Eletkor);
             var legidosebb = Kutyak.First(x => x.Eletkor == legnagyobbEletkor);
-
             Console.WriteLine($"7. Feladat: A legidősebb kutya neve és fajtája: {KutyaNevek.First(x => x.ID == legidosebb.NevID).Nev}, {KutyaFajtak.First(x => x.ID == legidosebb.FajtaID).Nev}");
 
             Console.WriteLine($"8. Feladat: Január 10.-én vizsgált kutya fajták: ");
-
-            var jan10Kutyak = from x in Kutyak where x.UtolsoOrvosiEllenorzes == "2018.01.10" group x by x.FajtaID into y select y;
+            // Miért nem pontos a mintával:
+            // A feladat leírja, hogy a fáljban maximum 500 sor lehetséges, de `Kutyák.csv`
+            // 593 sort tartalmaz. Ebben a + 93 sorban található: 591;53;179;1;2018.01.10
+            var jan10Kutyak = Kutyak.Where(x => x.UtolsoOrvosiEllenorzes == "2018.01.10").GroupBy(x => x.FajtaID);
             foreach (var jan10Kutya in jan10Kutyak)
                 Console.WriteLine($"\t{KutyaFajtak.First(x => x.ID == jan10Kutya.Key).Nev}: {jan10Kutya.Count()} kutya");
 
@@ -92,7 +93,7 @@ namespace Kutyák {
             Console.WriteLine($"10. Feladat: névstatisztika.txt");
 
             var writer = new StreamWriter("névstatisztika.txt");
-            var kutyaNevstat = (from x in Kutyak group x by x.NevID into k orderby k.Count() descending select k);
+            var kutyaNevstat = Kutyak.GroupBy(x => x.NevID).OrderByDescending(x => x.Count());
             foreach (var nevstat in kutyaNevstat) {
                 writer.WriteLine($"{KutyaNevek.First(x => x.ID == nevstat.Key).Nev};{nevstat.Count()}");
             }
