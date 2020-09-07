@@ -68,24 +68,10 @@ namespace Kutyák {
             Console.WriteLine($"8. Feladat: Január 10.-én vizsgált kutya fajták: ");
             // Miért nem pontos a mintával:
             // A feladat leírja, hogy a fáljban maximum 500 sor lehetséges, de `Kutyák.csv`
-            // 593 sort tartalmaz. Ebben a + 93 sorban található: 591;53;179;1;2018.01.10
+            // 593 sort tartalmaz. Ebben a +93 sorban található: 591;53;179;1;2018.01.10
             var jan10Kutyak = Kutyak.Where(x => x.UtolsoOrvosiEllenorzes == "2018.01.10").GroupBy(x => x.FajtaID);
             foreach (var jan10Kutya in jan10Kutyak)
                 Console.WriteLine($"\t{KutyaFajtak.First(x => x.ID == jan10Kutya.Key).Nev}: {jan10Kutya.Count()} kutya");
-
-            /*
-            var kutyaDB = new Dictionary<int, int>();
-            foreach (var kutya in Kutyak) {
-                if (kutya.UtolsoOrvosiEllenorzes != "2018.01.10")
-                    continue;
-                if (!kutyaDB.ContainsKey(kutya.FajtaID))
-                    kutyaDB.Add(kutya.FajtaID, 1);
-                else kutyaDB[kutya.FajtaID]++;
-            }
-            foreach (var kutya in kutyaDB)
-                Console.WriteLine($"\t{KutyaFajtak.First(x => x.ID == kutya.Key).Nev}: {kutya.Value} kutya");
-            */
-
 
             var naponKutyak = Kutyak.GroupBy(x => x.UtolsoOrvosiEllenorzes).OrderByDescending(x => x.Key).First();
             Console.WriteLine($"9. Feladat: Legjobban leterhelt nap: {naponKutyak.Key}: {naponKutyak.Count()} kutya");
