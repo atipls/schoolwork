@@ -66,9 +66,6 @@ namespace Kutyák {
             Console.WriteLine($"7. Feladat: A legidősebb kutya neve és fajtája: {KutyaNevek.First(x => x.ID == legidosebb.NevID).Nev}, {KutyaFajtak.First(x => x.ID == legidosebb.FajtaID).Nev}");
 
             Console.WriteLine($"8. Feladat: Január 10.-én vizsgált kutya fajták: ");
-            // Miért nem pontos a mintával:
-            // A feladat leírja, hogy a fáljban maximum 500 sor lehetséges, de `Kutyák.csv`
-            // 593 sort tartalmaz. Ebben a +93 sorban található: 591;53;179;1;2018.01.10
             var jan10Kutyak = Kutyak.Where(x => x.UtolsoOrvosiEllenorzes == "2018.01.10").GroupBy(x => x.FajtaID);
             foreach (var jan10Kutya in jan10Kutyak)
                 Console.WriteLine($"\t{KutyaFajtak.First(x => x.ID == jan10Kutya.Key).Nev}: {jan10Kutya.Count()} kutya");
